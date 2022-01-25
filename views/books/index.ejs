@@ -1,0 +1,25 @@
+<%- include('../partials/header') %>
+<table id="list">
+	<thead>
+		<tr>
+			<th>Book</th>
+			<th>Author</th>
+			<th>Book Cover</th>
+			<th>Rating</th>
+			<th>Reviews</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% books.forEach(function(b) { %>
+		<tr>
+			<td><%= b.title %></td>
+			<td><%= b.author %></td>
+			<td><%= b.bookCover %></td>
+			<td><%= b.rating %></td>
+			<td><a href="/books/<%= b._id %>/reviews">Reviews</a></td>
+			<td><a href="/books/<%= b._id %>">DETAILS</a></td>
+		</tr>
+		<% }); %>
+	</tbody>
+</table>
+<%- include('../partials/footer') %>

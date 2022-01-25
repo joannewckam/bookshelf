@@ -1,0 +1,47 @@
+
+ <h2>Book Detail</h2>
+ <h3>Book Cover<h3>
+ <p><%= book.bookCover%></p>
+
+ <table>
+     <thead>
+         <tr>
+             <th>Title</th>
+             <th>Author</th>
+       
+           
+         </tr>
+     </thead>
+
+         <tr>
+             <td><%= book.title %></td>
+             <td><%= book.author %></td>
+           
+       
+         </tr>
+ </table>
+ <table>
+   
+    `<thead>
+        <th>Rating</th>
+        <th>Reviews</th>
+     </thead>
+     <tr>
+        <td><%= book.rating %></td>
+        <% book.reviews.forEach(function(r){ %>
+         <td><%= r.review %></td>
+         <% }) %> 
+     </tr>
+
+ </table>
+ 
+ <h3>Add a Review</h3>
+  <form
+  id="add-review-form"
+  method="POST"
+  action="/books/<%=book._id%>/reviews"
+>
+<label>Review
+    <input type="text" name="review">
+  <input type="submit" value="Add Review" />
+</form>
