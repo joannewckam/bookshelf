@@ -9,5 +9,5 @@ router.get("/new", booksCtrl.new);
 router.post("/", booksCtrl.create);
 router.get("/:id", booksCtrl.show);
 
-router.post("/new/upload", uploadCtrl.upload);
+// router.post("/new/upload", uploadCtrl.upload);
 module.exports = router;
