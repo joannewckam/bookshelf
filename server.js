@@ -17,7 +17,7 @@ require("./config/passport");
 var indexRouter = require("./routes/index");
 var booksRouter = require("./routes/books");
 var reviewsRouter = require("./routes/reviews");
-
+var usersRouter = require("./routes/users");
 var app = express();
 bb.extend(app, {
 	upload: true,
@@ -46,6 +46,7 @@ app.use(passport.session());
 app.use("/", indexRouter);
 app.use("/books", booksRouter);
 app.use("/", reviewsRouter);
+app.use("/users", usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

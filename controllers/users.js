@@ -5,9 +5,6 @@ module.exports = {
 };
 
 function index(req, res) {
-	res.render("index", {
-		users,
-		user: req.user,
-	});
+	res.render("users", { user: req.user });
 	console.log(users);
 }
