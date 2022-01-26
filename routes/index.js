@@ -3,8 +3,8 @@ var router = express.Router();
 const passport = require("passport");
 
 /* GET home page. */
-router.get("/", function (req, res, next) {
-	res.render("index", { title: "Bookshelf", user: req.user });
+router.get("/", function (req, res) {
+	res.render("index", { user: req.user });
 });
 
 router.get(
@@ -22,7 +22,7 @@ router.get(
 );
 router.get("/logout", function (req, res) {
 	req.logout();
-	res.redirect("/");
+	res.redirect("/books");
 });
 
 module.exports = router;

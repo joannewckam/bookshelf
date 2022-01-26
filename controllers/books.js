@@ -3,7 +3,6 @@ const Book = require("../models/book");
 const request = require("request");
 const endpoint = "https://api.imgur.com/3/image";
 const fs = require("fs");
-const book = require("../models/book");
 
 module.exports = {
 	index,
