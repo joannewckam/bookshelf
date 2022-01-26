@@ -43,9 +43,9 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use("/", reviewsRouter);
 app.use("/", indexRouter);
 app.use("/books", booksRouter);
+app.use("/", reviewsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

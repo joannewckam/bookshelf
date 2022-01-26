@@ -1,15 +1,15 @@
-const Book = require("../models/book");
+let Book = require("../models/book");
 
 module.exports = {
-	add: addReview,
+	addReview,
 };
-
+// console.log("in reviews controller");
 function addReview(req, res) {
+	console.log("I'm in addReview");
 	Book.findById(req.params.id, function (err, book) {
 		book.reviews.push(req.body);
 		console.log("in addReview", req.body);
-		book.save(function (err) {
-			res.redirect(`/books/${book._id}`);
-		});
+		book.save()
+		res.redirect(`/books/${book._id}`);
 	});
 }

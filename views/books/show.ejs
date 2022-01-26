@@ -16,28 +16,30 @@
 		<tr>
 			<th>Title</th>
 			<th>Author</th>
+			<th>Rating</th>
 		</tr>
 	</thead>
 	<tr>
 		<td><%= book.title %></td>
 		<td><%= book.author %></td>
-	</tr>
-	<thead>
-		<th>Rating</th>
-		<th>Reviews</th>
-	</thead>
-	<tr>
 		<td><%= book.rating %></td>
-		<% book.reviews.forEach(function(r){ %>
-		<td><%= r.review %></td>
-		<% }) %>
 	</tr>
 </table>
 
+<table>
+<th>Reviews</th>
+<tr>
+	<% book.reviews.forEach(function(r){ %>
+	<td><%= r.review %></td>
+	<% }) %>
+</tr>
+</table>
 <h4>Write a review</h4>
-<form id="add-review-form" method="POST" action="/books/<%=book.id%>/reviews">
-	<input type="text" name="review" />
-	<input type="submit" value="Add Review" />
+<form action="/books/<%=book._id%>/reviews" method="POST" enctype="multipart/form-data">
+	<!-- <input name="review" type="text" required> -->
+	<input name="review"></input>
+
+	<button>Add Review</button>
 </form>
 
 <%- include('../partials/footer') %>
