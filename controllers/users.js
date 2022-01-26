@@ -6,5 +6,4 @@ module.exports = {
 
 function index(req, res) {
 	res.render("users", { user: req.user });
-	console.log(users);
 }

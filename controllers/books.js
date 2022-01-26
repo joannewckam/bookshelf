@@ -13,25 +13,29 @@ module.exports = {
 	updateForm,
 	update,
 };
-
+function getUser(info) {
+	if (info) return info;
+	else return null;
+}
 function index(req, res) {
+	let user = getUser(req.user);
 	Book.find({}, function (err, books) {
-		res.render("books/index", { title: "All books", books });
+		res.render("books/index", { books, user });
 	});
 }
 
 function newBook(req, res) {
-	res.render("books/new", { title: "Add book" });
+	let user = getUser(req.user);
+	res.render("books/new", { user });
 }
 function updateForm(req, res) {
+	let user = getUser(req.user);
 	console.log(req.params.id);
-	res.render("books/updateForm", { book: req.params.id });
+	res.render("books/updateForm", { book: req.params.id, user });
 }
 
 function update(req, res) {
-	console.log("create request", req.body);
 	let image = base64_encode(req.files.image.file);
-	console.log("create image", image);
 	const options = {
 		method: "POST",
 		url: endpoint,
@@ -61,9 +65,8 @@ function update(req, res) {
 }
 
 function create(req, res) {
-	console.log("create request", req.body);
+	console.log("in create function");
 	let image = base64_encode(req.files.image.file);
-	console.log("create image", image);
 	const options = {
 		method: "POST",
 		url: endpoint,
@@ -86,18 +89,17 @@ function create(req, res) {
 		});
 		book.save(function (err) {
 			if (err) console.log(err);
-			console.log("in save book", book);
+			console.log("in save book");
 			res.redirect("/books");
 		});
 	});
 }
 function show(req, res) {
+	let user = getUser(req.user);
 	Book.findById(req.params.id)
 		.populate("reviews")
 		.exec(function (err, book) {
-			console.log("in show review", book.reviews);
-			console.log("in show book function", book);
-			res.render("books/show", { title: "Book Detail", book });
+			res.render("books/show", { title: "Book Detail", book, user });
 		});
 }
 

@@ -1,11 +1,24 @@
 body {
 	padding: 50px;
 	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	color: white;
+	font-weight: bold;
+	background-color: #e4b688;
 }
 
 a {
 	color: #00b7ff;
+	font-size: large;
+	color: whitesmoke;
 }
 ul {
 	list-style-type: none;
+}
+nav {
+	border-radius: 10px;
+	text-shadow: 1px 1px 1px grey;
+}
+img {
+	max-width: 100px;
+	max-height: 300px;
 }

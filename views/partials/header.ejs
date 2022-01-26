@@ -15,10 +15,15 @@
 		<body class="center-align"></body>
 	</head>
 	<body>
-	<nav>
+	<nav class= "#ffe082 amber lighten-3">
 		<a href="/users">Profile |</a>
 		<a href="/"> Home |</a>
 		<a href="/books"> All Books |</a>
-		<a href="/books/new"> Add Book</a>
+		<a href="/books/new"> Add Book | </a>
+			<% if (!user) { %>
+			<a href="/auth/google">Login</a>
+			<% }else { %>
+			<a href="/logout">Log Out</a>
+			<% } %>
 	</nav>
 </html>
