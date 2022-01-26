@@ -11,6 +11,8 @@ module.exports = {
 	create,
 	show,
 	delete: deleteBook,
+	updateForm,
+	update,
 };
 
 function index(req, res) {
@@ -21,6 +23,42 @@ function index(req, res) {
 
 function newBook(req, res) {
 	res.render("books/new", { title: "Add book" });
+}
+function updateForm(req, res) {
+	console.log(req.params.id);
+	res.render("books/updateForm", { book: req.params.id });
+}
+
+function update(req, res) {
+	console.log("create request", req.body);
+	let image = base64_encode(req.files.image.file);
+	console.log("create image", image);
+	const options = {
+		method: "POST",
+		url: endpoint,
+		headers: {
+			Authorization: `Client-ID ${process.env.CLIENT_ID}`,
+		},
+		formData: {
+			type: "base64",
+			image: image,
+		},
+	};
+	request(options, function (err, response) {
+		if (err) return console.log(err);
+		let body = JSON.parse(response.body);
+		let book = new Book({
+			title: req.body.title,
+			author: req.body.author,
+			rating: req.body.rating,
+			bookCover: body.data.link,
+		});
+		book.save(function (err) {
+			if (err) console.log(err);
+			console.log("in save book", book);
+			res.redirect("/books");
+		});
+	});
 }
 
 function create(req, res) {

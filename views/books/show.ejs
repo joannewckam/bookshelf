@@ -1,6 +1,14 @@
 <%- include('../partials/header') %>
 
-<h2>Book Detail</h2>
+<h3>Book Detail</h3>
+<form
+	id="delete-form"
+	method="POST"
+	action="/books/<%=book.id%>/?_method=DELETE"
+>
+	<button type="submit">Delete book</button>
+	<a href="/books/update/<%=book.id %>"><button>EDIT</button></a>
+</form>
 <p><img src="<%= book.bookCover%>" /></p>
 
 <table>
@@ -26,17 +34,10 @@
 	</tr>
 </table>
 
-<h4>Add a Review</h4>
+<h4>Write a review</h4>
 <form id="add-review-form" method="POST" action="/books/<%=book.id%>/reviews">
 	<input type="text" name="review" />
 	<input type="submit" value="Add Review" />
 </form>
-<%- include('../partials/footer') %>
 
-<form
-	id="delete-form"
-	method="POST"
-	action="/books/<%=book.id%>/?_method=DELETE"
->
-	<button type="submit">Delete book</button>
-</form>
+<%- include('../partials/footer') %>

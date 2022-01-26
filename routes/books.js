@@ -9,5 +9,7 @@ router.get("/new", booksCtrl.new);
 router.post("/", booksCtrl.create);
 router.get("/:id", booksCtrl.show);
 router.delete("/:id", booksCtrl.delete);
+router.get("/update/:id", booksCtrl.updateForm);
+router.put("/:id", booksCtrl.update);
 
 module.exports = router;
