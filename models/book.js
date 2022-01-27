@@ -1,22 +1,32 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const reviewSchema = new Schema({
-	review: String,
-});
-const bookSchema = new Schema({
-	title: {
-		type: String,
-		required: true,
+const reviewSchema = new Schema(
+	{
+		review: String,
 	},
-	author: {
-		type: String,
-		required: true,
+	{
+		timestamps: true,
+	}
+);
+const bookSchema = new Schema(
+	{
+		title: {
+			type: String,
+			required: true,
+		},
+		author: {
+			type: String,
+			required: true,
+		},
+		bookCover: {
+			type: String, //url for the image stores in imgur
+		},
+		rating: Number,
+		reviews: [reviewSchema],
 	},
-	bookCover: {
-		type: String, //url for the image stores in imgur
-	},
-	rating: Number,
-	reviews: [reviewSchema],
-});
+	{
+		timestamps: true,
+	}
+);
 module.exports = mongoose.model("Book", bookSchema);

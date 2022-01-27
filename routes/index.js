@@ -5,6 +5,7 @@ const passport = require("passport");
 /* GET home page. */
 router.get("/", function (req, res) {
 	res.render("index", { user: req.user });
+	// res.redirect("/");
 });
 
 router.get(
@@ -16,13 +17,13 @@ router.get(
 router.get(
 	"/oauth2callback",
 	passport.authenticate("google", {
-		successRedirect: "/books",
+		successRedirect: "/users",
 		failureRedirect: "/books",
 	})
 );
 router.get("/logout", function (req, res) {
 	req.logout();
-	res.redirect("/books/new");
+	res.redirect("/books");
 });
 
 module.exports = router;

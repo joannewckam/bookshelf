@@ -23,18 +23,44 @@ function index(req, res) {
 		res.render("books/index", { books, user });
 	});
 }
-
 function newBook(req, res) {
 	let user = getUser(req.user);
 	res.render("books/new", { user });
 }
 function updateForm(req, res) {
 	let user = getUser(req.user);
-	console.log(req.params.id);
 	res.render("books/updateForm", { book: req.params.id, user });
 }
-
 function update(req, res) {
+	let image = base64_encode(req.files.image.file);
+	const options = {
+		method: "POST",
+		url: endpoint,
+		headers: {
+			Authorization: `Client-ID ${process.env.CLIENT_ID}`,
+		},
+		formData: {
+			type: "base64",
+			image: image,
+		},
+	};
+	request(options, function (err, response) {
+		if (err) return console.log(err);
+		let body = JSON.parse(response.body);
+		let book = new Book({
+			title: req.body.title,
+			author: req.body.author,
+			rating: req.body.rating,
+			bookCover: body.data.link,
+		});
+		book.save(function (err) {
+			if (err) console.log(err);
+			res.redirect("/books");
+		});
+	});
+}
+function create(req, res) {
+	console.log("in create function");
 	let image = base64_encode(req.files.image.file);
 	const options = {
 		method: "POST",
@@ -63,56 +89,22 @@ function update(req, res) {
 		});
 	});
 }
-
-function create(req, res) {
-	console.log("in create function");
-	let image = base64_encode(req.files.image.file);
-	const options = {
-		method: "POST",
-		url: endpoint,
-		headers: {
-			Authorization: `Client-ID ${process.env.CLIENT_ID}`,
-		},
-		formData: {
-			type: "base64",
-			image: image,
-		},
-	};
-	request(options, function (err, response) {
-		if (err) return console.log(err);
-		let body = JSON.parse(response.body);
-		let book = new Book({
-			title: req.body.title,
-			author: req.body.author,
-			rating: req.body.rating,
-			bookCover: body.data.link,
-		});
-		book.save(function (err) {
-			if (err) console.log(err);
-			console.log("in save book");
-			res.redirect("/books");
-		});
-	});
-}
 function show(req, res) {
 	let user = getUser(req.user);
 	Book.findById(req.params.id)
 		.populate("reviews")
 		.exec(function (err, book) {
-			res.render("books/show", { title: "Book Detail", book, user });
+			res.render("books/show", { book, user });
 		});
 }
-
 function base64_encode(image) {
 	let bitmap = fs.readFileSync(image);
 	return bitmap.toString("base64");
 }
-
 function deleteBook(req, res) {
 	Book.findById(req.params.id, function (err, book) {
 		book.remove();
 		book.save(function (err) {
-			console.log("after remover", book);
 			res.redirect("/books");
 		});
 	});

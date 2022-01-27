@@ -8,9 +8,14 @@ router.get("/", booksCtrl.index);
 router.get("/new", booksCtrl.new);
 router.post("/", booksCtrl.create);
 router.get("/:id", booksCtrl.show);
-router.delete("/:id", booksCtrl.delete);
+router.delete("/:id", isLoggedIn, booksCtrl.delete);
 
-router.get("/update/:id", booksCtrl.updateForm);
-router.put("/:id", booksCtrl.update);
+router.get("/update/:id", isLoggedIn, booksCtrl.updateForm);
+router.put("/:id", isLoggedIn, booksCtrl.update);
+
+function isLoggedIn(req, res, next) {
+	if (req.isAuthenticated()) return next();
+	res.redirect("/auth/google");
+}
 
 module.exports = router;
