@@ -1,14 +1,6 @@
 <%- include('../partials/header') %>
 
 <h3><%=book.title%> </h3>
-<form
-	id="delete-form"
-	method="POST"
-	action="/books/<%=book.id%>/?_method=DELETE"
->
-	<button type="submit">Delete book</button>
-</form>
-<a href="/books/update/<%=book.id%>"><button>EDIT</button></a>
 <p><img src="<%= book.bookCover%>" /></p>
 
 <table>
@@ -39,7 +31,17 @@
 	<!-- <input name="review" type="text" required> -->
 	<input name="review"></input>
 
-	<button>Add Review</button>
+	<button class="waves-effect waves-light btn" >Add Review</button>
 </form>
+<br>
+<form
+	id="delete-form"
+	method="POST"
+	action="/books/<%=book.id%>/?_method=DELETE"
+>
+	<button class="waves-effect waves-light btn" type="submit">Delete book</button>
+</form>
+<br>
+<a class="" href="/books/update/<%=book.id%>"><button class="waves-effect waves-light btn" >EDIT</button></a>
 
 <%- include('../partials/footer') %>

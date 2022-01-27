@@ -1,44 +1,51 @@
 <%- include('./partials/header') %>
 <!-- Login -->
 
-<h3>My shelf</h3>
+<!-- FAVOURITES SHELF -->
+<div class="row">
+	<div class="col s12">
+		<div class="card grey amber-lighten-3">
+			<div class="card-content white-text">
+				<p>
+					<h4>Hi, <%=user.name%>! </h4>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+
 <!-- ALL BOOKS -->
 <section class="container">
 	<div class="row">
 		<div class="col s12">
-			<div class="card grey darken-1">
+			<div class="card grey amber-lighen-3">
 				<div class="card-content white-text">
-					<span class="card-title">Featured Favourite</span>
+					<span class="card-title">Current favourite</span>
 					<p>
-						I am a very simple book. I am good at containing small bits of
-						information. I am convenient because I require little markup to use
-						effectively.
+						<h4><%=book.title%> </h4>
+						<p><img src="<%= book.bookCover%>" /></p>
+						<table>
+							<thead>
+								<tr>
+									<th>Title</th>
+									<th>Author</th>
+									<th>Rating</th>
+								</tr>
+							</thead>
+							<tr>
+								<td><%= book.title %></td>
+								<td><%= book.author %></td>
+								<td><%= book.rating %></td>
+							</tr>
+						</table>
 					</p>
 				</div>
 				<div class="card-action">
-					<a href="#">Details</a>
+					<a href="/books/<%=book.id%>">Details</a>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<!-- FAVOURITES SHELF -->
-	<div class="row">
-		<div class="col s12">
-			<div class="card grey darken-1">
-				<div class="card-content white-text">
-					<span class="card-title"> Book </span>
-					<p>
-						I am a very simple book. I am good at containing small bits of
-						information. I am convenient because I require little markup to use
-						effectively.
-					</p>
-				</div>
-				<div class="card-action">
-					<a href="#">Details</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
 <%- include('./partials/footer') %>

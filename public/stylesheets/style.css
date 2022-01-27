@@ -1,20 +1,20 @@
 body {
 	padding: 50px;
 	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-	color: white;
+	color: #607d8b;
 	font-weight: bold;
-	background-color: #e4b688;
+	background-color: #d7ccc8;
 }
 
 a {
-	color: #00b7ff;
 	font-size: large;
-	color: whitesmoke;
+	color: #607d8b;
 }
 ul {
 	list-style-type: none;
 }
 nav {
+	background-color: #ffe57f;
 	border-radius: 10px;
 	text-shadow: 1px 1px 1px grey;
 }

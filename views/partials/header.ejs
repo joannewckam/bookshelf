@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Bookshelf</title>
+		<!-- <title>Bookshelf</title> -->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link
 			href="https://fonts.googleapis.com/icon?family=Material+Icons"
 			rel="stylesheet"
@@ -15,11 +16,11 @@
 		<body class="center-align"></body>
 	</head>
 	<body>
-	<nav class= "#ffe082 amber lighten-3">
+	<nav>
+		<!-- <a href="/users">Profile |</a> -->
 		<a href="/users">Profile |</a>
 		<a href="/"> Home |</a>
 		<a href="/books"> All Books |</a>
-		<a href="/books/new"> Add Book | </a>
 			<% if (!user) { %>
 			<a href="/auth/google">Login</a>
 			<% }else { %>
@@ -27,3 +28,4 @@
 			<% } %>
 	</nav>
 </html>
+<!-- class= "#ffe082 amber lighten-4" -->
