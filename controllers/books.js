@@ -59,35 +59,51 @@ function update(req, res) {
 		});
 	});
 }
+function base64_encode(image) {
+	let bitmap = fs.readFileSync(image);
+	return bitmap.toString("base64");
+}
 function create(req, res) {
-	console.log("in create function");
-	let image = base64_encode(req.files.image.file);
-	const options = {
-		method: "POST",
-		url: endpoint,
-		headers: {
-			Authorization: `Client-ID ${process.env.CLIENT_ID}`,
-		},
-		formData: {
-			type: "base64",
-			image: image,
-		},
-	};
-	request(options, function (err, response) {
-		if (err) return console.log(err);
-		let body = JSON.parse(response.body);
+	if (req.files.image) {
+		let image = base64_encode(req.files.image.file);
+		const options = {
+			method: "POST",
+			url: endpoint,
+			headers: {
+				Authorization: `Client-ID ${process.env.CLIENT_ID}`,
+			},
+			formData: {
+				type: "base64",
+				image: image,
+			},
+		};
+		request(options, function (err, response) {
+			if (err) return "error in request";
+			let body = JSON.parse(response.body);
+			let book = new Book({
+				title: req.body.title,
+				author: req.body.author,
+				rating: req.body.rating,
+				bookCover: body.data.link,
+			});
+			book.save(function (err) {
+				if (err) console.log(err);
+				console.log("in save book", book);
+				res.redirect("/books");
+			});
+		});
+	} else {
 		let book = new Book({
 			title: req.body.title,
 			author: req.body.author,
 			rating: req.body.rating,
-			bookCover: body.data.link,
 		});
 		book.save(function (err) {
 			if (err) console.log(err);
 			console.log("in save book", book);
 			res.redirect("/books");
 		});
-	});
+	}
 }
 function show(req, res) {
 	let user = getUser(req.user);
@@ -97,10 +113,7 @@ function show(req, res) {
 			res.render("books/show", { book, user });
 		});
 }
-function base64_encode(image) {
-	let bitmap = fs.readFileSync(image);
-	return bitmap.toString("base64");
-}
+
 function deleteBook(req, res) {
 	Book.findById(req.params.id, function (err, book) {
 		book.remove();

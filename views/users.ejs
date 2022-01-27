@@ -18,7 +18,7 @@
 		<div class="col s12">
 			<div class="card grey amber-lighen-3">
 				<div class="card-content white-text">
-					<span class="card-title">Current favourite</span>
+					<span class="card-title">Top Favourite</span>
 					<p>
 						<% if (book) { %> 
 						<h4><%=book.title%> </h4>
@@ -36,14 +36,14 @@
 								<td><%= book.author %></td>
 								<td><%= book.rating %></td>
 							</tr>
-							<% } else { %> 
-								No Books yet
-							<% } %> 
 						</table>
 					</p>
 				</div>
 				<div class="card-action">
 					<a href="/books/<%=book.id%>">Details</a>
+					<% } else { %> 
+						No Books yet
+					<% } %> 
 				</div>
 			</div>
 		</div>

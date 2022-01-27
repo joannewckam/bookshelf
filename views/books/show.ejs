@@ -26,13 +26,14 @@
 	<% }) %>
 </tr>
 </table>
-<h4>Write a review</h4>
 <form action="/books/<%=book._id%>/reviews" method="POST" enctype="multipart/form-data">
 	<!-- <input name="review" type="text" required> -->
 	<input name="review"></input>
 
 	<button class="waves-effect waves-light btn" >Add Review</button>
 </form>
+<br>
+<a class="" href="/books/update/<%=book.id%>"><button class="waves-effect waves-light btn" >EDIT</button></a>
 <br>
 <form
 	id="delete-form"
@@ -42,6 +43,5 @@
 	<button class="waves-effect waves-light btn" type="submit">Delete book</button>
 </form>
 <br>
-<a class="" href="/books/update/<%=book.id%>"><button class="waves-effect waves-light btn" >EDIT</button></a>
 
 <%- include('../partials/footer') %>

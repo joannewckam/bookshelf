@@ -6,7 +6,7 @@ const userSchema = new Schema(
 		name: String,
 		email: String,
 		avatar: String,
-		books: [{ type: Schema.Types.ObjectId, ref: "Book" }],
+		book: [{ type: Schema.Types.ObjectId, ref: "Book" }],
 		googleId: String,
 	},
 	{
