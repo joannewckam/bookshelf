@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema(
 	{
 		name: String,
-		email: String,
-		avatar: String,
+		// email: String,
+		// avatar: String,
 		book: [{ type: Schema.Types.ObjectId, ref: "Book" }],
 		googleId: String,
 	},

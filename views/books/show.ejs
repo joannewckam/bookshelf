@@ -24,16 +24,16 @@
 	<!-- <input name="review" type="text" required> -->
 	<input name="review" autocomplete="off"></input>
 
-	<button class="waves-effect waves-light btn" >Add Review</button>
+	<button class="waves-effect waves-light btn button" >Add Review</button>
 </form>
 <br>
-<a class="" href="/books/update/<%=book.id%>"><button class="waves-effect waves-light btn" >EDIT</button></a>
+<a class="" href="/books/update/<%=book.id%>"><button class="waves-effect waves-light btn button" >EDIT</button></a>
 <br>
 	<form
 		id="delete-form"
 		method="POST"
 		action="/books/<%=book.id%>/?_method=DELETE">
-	<button class="waves-effect waves-light btn" type="submit">Delete book</button>
+	<button class="waves-effect waves-light btn button" type="submit">Delete book</button>
 	</form>
 <br>
 
