@@ -29,7 +29,9 @@ function newBook(req, res) {
 }
 function updateForm(req, res) {
 	let user = getUser(req.user);
-	res.render("books/updateForm", { book: req.params.id, user });
+	Book.findById(req.params.id, function (err, book) {
+		res.render("books/updateForm", { book, user });
+	});
 }
 function update(req, res) {
 	if (req.files.image) {

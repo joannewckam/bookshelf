@@ -1,24 +1,14 @@
 <%- include('./partials/header') %>
 <!-- FAVOURITES SHELF -->
-<div class="row">
-	<div class="col s12">
-		<div class="card grey amber-lighten-3">
-			<div class="card-content white-text">
-				<p>
-					<h4>Hi, <%=user.name%>! </h4>
-				</p>
-			</div>
-		</div>
-	</div>
-</div>
-</section>
+<h4>Hi, <%=user.name%>! </h4>
+				
 <!-- ALL BOOKS -->
 <section class="container">
 	<div class="row">
 		<div class="col s12">
 			<div class="card grey amber-lighen-3">
 				<div class="card-content white-text">
-					<span class="card-title">Top Favourite</span>
+					<span class="card-title">Top Rated </span>
 					<p>
 						<% if (book) { %> 
 						<h4><%=book.title%> </h4>

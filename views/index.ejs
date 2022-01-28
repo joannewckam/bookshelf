@@ -1,5 +1,6 @@
 <%- include('./partials/header') %>
 <!-- Login -->
+
 <script>
 	$(document).ready(function () {
 		$(".carousel").carousel({ indicators: true });
@@ -12,13 +13,5 @@
 		><img src="<%= b.bookCover %>"
 	/></a>
 	<% }); %>
-</div>
-<div class="center">
-	<a
-		class="btn-floating btn-large waves-effect waves-light amber lighten-2"
-		href="/books/new"
-	>
-		<i class="material-icons">add</i></a
-	>
 </div>
 <%- include('./partials/footer') %>
