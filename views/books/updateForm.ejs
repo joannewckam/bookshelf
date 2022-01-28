@@ -3,7 +3,7 @@
 <%=book.title %>
 <p><img src="<%= book.bookCover%>"/></p>
 
-<form  method="POST" action="/books/<%= book %>?_method=PUT" enctype="multipart/form-data">
+<form  method="POST" action="/books/<%=book._id%>?_method=PUT" enctype="multipart/form-data">
     <ul>
         <li>Title:</label>
         <input type="text" name="title"/></li>
