@@ -2,7 +2,7 @@ BOOKSHELF APP
 
 This app is a way to keep track of books and a user can log in with Google. A logged in user is able to view all that have been created in an index and add, edit or delete books. Creating a book includes a Title, Author and image for a book cover. Viewing a specific book allows a logged in user to edit or delete a book and to add reviews to the book.
 
-<img src="images/bookshelf1.png"><img src="images/allbooks.png">
+<img src="./images/bookshelf1.png"><img src="./images/allbooks.png">
 
 TECHNOLOGIES USED:
 1.Javascript, HTML, CSS
