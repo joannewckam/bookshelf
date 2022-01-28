@@ -1,7 +1,18 @@
 <%- include('./partials/header') %>
 <!-- Login -->
-<h1>Bookshelf</h1>
-<img src=" " />
+<script>
+	$(document).ready(function () {
+		$(".carousel").carousel({ indicators: true });
+	});
+</script>
+
+<div class="carousel">
+	<% book.forEach(function(b) { %>
+	<a class="carousel-item" href="/books/<%= b._id %>"
+		><img src="<%= b.bookCover %>"
+	/></a>
+	<% }); %>
+</div>
 <div class="center">
 	<a
 		class="btn-floating btn-large waves-effect waves-light amber lighten-2"

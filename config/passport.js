@@ -26,8 +26,8 @@ passport.use(
 					});
 					newUser.save(function (err) {
 						if (err) return cb(err);
-						return cb(null, newUser);
 					});
+					return cb(null, newUser);
 				}
 			});
 		}

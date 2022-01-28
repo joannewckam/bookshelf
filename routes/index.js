@@ -1,12 +1,10 @@
 var express = require("express");
 var router = express.Router();
 const passport = require("passport");
+const indexCtrl = require("../controllers/index");
 
 /* GET home page. */
-router.get("/", function (req, res) {
-	res.render("index", { user: req.user });
-	// res.redirect("/");
-});
+router.get("/", indexCtrl.index);
 
 router.get(
 	"/auth/google",
@@ -25,5 +23,4 @@ router.get("/logout", function (req, res) {
 	req.logout();
 	res.redirect("/books");
 });
-
 module.exports = router;

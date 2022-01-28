@@ -1,29 +1,16 @@
 <%- include('../partials/header') %>
-<table id="list">
-	<thead>
-		<tr>
-			<th>Book</th>
-			<th>Author</th>
-			<th>Book Cover</th>
-			<th>Rating</th>
-			<!-- <th>Reviews</th> -->
-		</tr>
-	</thead>
-	<tbody>
+
+<div class="section">
+	<a class="waves-effect waves-light btn" href="/books/new"> Add a book </a>
+</div>
+
+<div class="section">
+	<div class="row">
 		<% books.forEach(function(b) { %>
-		<tr>
-			<td><%= b.title %></td>
-			<td><%= b.author %></td>
-			<td><img src="<%= b.bookCover %>" /></td>
-			<td><%= b.rating %></td>
-			<!-- <td><a href="/books/<%= b._id %>/reviews">Reviews</a></td> -->
-			<td>
-				<a href="/books/<%= b._id %>">DETAILS </a>
-			</td>
-		</tr>
+		<div class="col s2">
+			<a href="/books/<%= b._id %>"><img src="<%= b.bookCover %>" class="responsive-img card" /></a>
+		</div>
 		<% }); %>
-	</tbody>
-</table>
-<br />
-<a class="waves-effect waves-light btn" href="/books/new"> Add Book </a>
+</div>
+</section>
 <%- include('../partials/footer') %>

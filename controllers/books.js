@@ -72,12 +72,15 @@ function update(req, res) {
 		});
 	}
 }
+//from expressbusboy
 function base64_encode(image) {
 	let bitmap = fs.readFileSync(image);
 	return bitmap.toString("base64");
 }
 function create(req, res) {
 	if (req.files.image) {
+		//if there is an image uploaded
+		//busboy
 		let image = base64_encode(req.files.image.file);
 		const options = {
 			method: "POST",
@@ -106,6 +109,7 @@ function create(req, res) {
 			});
 		});
 	} else {
+		//else save the book without an image link - default image will be used
 		let book = new Book({
 			title: req.body.title,
 			author: req.body.author,

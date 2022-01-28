@@ -14,14 +14,15 @@ ul {
 	list-style-type: none;
 }
 nav {
-	background-color: #ffe57f;
 	border-radius: 10px;
 	text-shadow: 1px 1px 1px grey;
 }
 img {
 	max-width: 100px;
 	max-height: 300px;
+	border-radius: 5px;
 }
 input {
 	text-align: center;
+	font-size: large;
 }
