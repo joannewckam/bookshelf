@@ -3,31 +3,37 @@
 	<head>
 		<title>Bookshelf</title>
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<link
-			href="https://fonts.googleapis.com/icon?family=Material+Icons"
-			rel="stylesheet"
-		/>
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-		/>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
 		<link rel="stylesheet" href="/stylesheets/style.css" />
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 		<body class="center-align"></body>
 	</head>
 	<body>
+		<script> $(document).ready(function(){$('.sidenav').sidenav();});</script>
 	<nav>
-		<!-- <a href="/users">Profile |</a> -->
-		<a href="/users">Profile |</a>
-		<a href="/"> Home |</a>
-		<a href="/books"> All Books |</a>
-			<% if (!user) { %>
-			<a href="/auth/google">Login</a>
-			<% }else { %>
-			<a href="/logout">Log Out</a>
-			<% } %>
+		<div class="nav-wrapper">
+			<a href="/" class="brand-logo center">Bookshelf</a>
+			<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+				<li><a href="/books"> All Books </a></li>
+				<li><a href="/users">Profile </a></li>
+				<% if (!user) { %>
+				<li><a href="/auth/google">Login</a></li>
+				<% }else { %>
+				<li><a href="/logout">Log Out</a></li>
+				<% } %>
+			</ul>
+		</div>
 	</nav>
+	<ul class="sidenav" id="mobile-demo">
+		<li><a href="/books"> All Books |</a></li>
+		<li><a href="/users">Profile |</a></li>
+			<% if (!user) { %>
+			<li><a href="/auth/google">Login</a></li>
+			<% }else { %>				
+			<li><a href="/logout">Log Out</a></li>
+			<% } %>
+	</ul>
 </html>
-<!-- class= "#ffe082 amber lighten-4" -->

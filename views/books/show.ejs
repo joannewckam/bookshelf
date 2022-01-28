@@ -3,45 +3,38 @@
 <h3><%=book.title%> </h3>
 <p><img src="<%= book.bookCover%>" /></p>
 
-<table>
-	<thead>
-		<tr>
-			<th>Title</th>
-			<th>Author</th>
-			<th>Rating</th>
-		</tr>
-	</thead>
-	<tr>
-		<td><%= book.title %></td>
-		<td><%= book.author %></td>
-		<td><%= book.rating %></td>
-	</tr>
-</table>
-
-<table>
-<th>Reviews</th>
-<tr>
+	<ul>
+		<li>Title: <%= book.title %></li>
+		<li></li>Author: <%= book.author %></li>
+		<li>Rating:<%= book.rating %></li>
+	</ul>
+<p>Reviews:</p>
+<div class="section">
+	<div class="row">
+		<div class="col s12">
 	<% book.reviews.forEach(function(r){ %>
 	<td><%= r.review %></td>
 	<% }) %>
-</tr>
+		</div>
+	</div>
+</div>
+
 </table>
 <form action="/books/<%=book._id%>/reviews" method="POST" enctype="multipart/form-data">
 	<!-- <input name="review" type="text" required> -->
-	<input name="review"></input>
+	<input name="review" autocomplete="off"></input>
 
 	<button class="waves-effect waves-light btn" >Add Review</button>
 </form>
 <br>
 <a class="" href="/books/update/<%=book.id%>"><button class="waves-effect waves-light btn" >EDIT</button></a>
 <br>
-<form
-	id="delete-form"
-	method="POST"
-	action="/books/<%=book.id%>/?_method=DELETE"
->
+	<form
+		id="delete-form"
+		method="POST"
+		action="/books/<%=book.id%>/?_method=DELETE">
 	<button class="waves-effect waves-light btn" type="submit">Delete book</button>
-</form>
+	</form>
 <br>
 
 <%- include('../partials/footer') %>

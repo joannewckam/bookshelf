@@ -1,19 +1,19 @@
 <%- include('../partials/header') %>
-<h4>Edit</h4>
+<h5>Edit</h5>
 <%=book.title %>
 <p><img src="<%= book.bookCover%>"/></p>
 
 <form  method="POST" action="/books/<%= book %>?_method=PUT" enctype="multipart/form-data">
     <ul>
-    <li>Title:</label>
-    <input type="text" name="title"/></li>
-	<li><label>Author:</label>
-	<input type="text" name="author" />
-	<li><label>Rating</label>
-    <input type="number" name="rating" min="1" max="5"/>
-    <input type="file" name="image">
-    <br>
-	<input class="waves-effect waves-light btn" type="submit" value="Update book" />
-</ul>
+        <li>Title:</label>
+        <input type="text" name="title"/></li>
+        <li><label>Author:</label>
+        <input type="text" name="author" />
+        <li><label>Rating</label>
+        <input type="number" name="rating" min="1" max="5"/>
+        <input type="file" name="image">
+        <br>
+        <input class="waves-effect waves-light btn" type="submit" value="Update book" />
+    </ul>
 </form>
 <%- include('../partials/footer') %>

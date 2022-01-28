@@ -9,9 +9,9 @@
 
 <div class="carousel">
 	<% book.forEach(function(b) { %>
-	<a class="carousel-item" href="/books/<%= b._id %>"
-		><img src="<%= b.bookCover %>"
-	/></a>
+	<a class="carousel-item" href="/books/<%= b._id %>">
+		<img src="<%= b.bookCover %>" />
+	</a>
 	<% }); %>
 </div>
 <%- include('./partials/footer') %>

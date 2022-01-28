@@ -4,10 +4,8 @@ module.exports = {
 	addReview,
 };
 function addReview(req, res) {
-	console.log("I'm in addReview");
 	Book.findById(req.params.id, function (err, book) {
 		book.reviews.push(req.body);
-		console.log("in addReview", req.user);
 		book.save();
 		res.redirect(`/books/${book._id}`);
 	});

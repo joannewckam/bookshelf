@@ -13,7 +13,6 @@ function index(req, res) {
 		.sort({ createdAt: -1 })
 		.then(function (title) {
 			let book = title;
-			console.log(book);
 			res.render("index", { user: getUser(req.user), book });
 		});
 }

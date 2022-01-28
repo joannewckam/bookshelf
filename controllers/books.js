@@ -69,7 +69,6 @@ function update(req, res) {
 		});
 		book.save(function (err) {
 			if (err) console.log(err);
-			console.log("in save book", book);
 			res.redirect("/books");
 		});
 	}
@@ -106,7 +105,6 @@ function create(req, res) {
 			});
 			book.save(function (err) {
 				if (err) console.log(err);
-				console.log("in save book", book);
 				res.redirect("/books");
 			});
 		});
@@ -119,7 +117,6 @@ function create(req, res) {
 		});
 		book.save(function (err) {
 			if (err) console.log(err);
-			console.log("in save book", book);
 			res.redirect("/books");
 		});
 	}

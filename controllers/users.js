@@ -15,11 +15,6 @@ function index(req, res) {
 		.gt(3)
 		.then(function (title) {
 			let book = title;
-			console.log(book);
 			res.render("users", { user: getUser(req.user), book });
 		});
 }
-
-// function index(req, rest) {
-// 	res.render('users', )
-// }

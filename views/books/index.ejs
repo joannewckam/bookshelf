@@ -8,9 +8,12 @@
 	<div class="row">
 		<% books.forEach(function(b) { %>
 		<div class="col s2">
-			<a href="/books/<%= b._id %>"><img src="<%= b.bookCover %>" class="responsive-img card" /></a>
+			<a href="/books/<%= b._id %>"
+				><img src="<%= b.bookCover %>" class="responsive-img card"
+			/></a>
 		</div>
 		<% }); %>
+	</div>
 </div>
-</section>
+
 <%- include('../partials/footer') %>
